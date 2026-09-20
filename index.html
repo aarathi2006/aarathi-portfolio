@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Boddu Aarathi – Software and ML Engineer</title>
+<meta name="description" content="Portfolio of Boddu Aarathi, a Computer Science undergraduate building Python and Flask backends with machine learning.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎧</text></svg>">
+<meta property="og:title" content="Boddu Aarathi – Software and ML Engineer">
+<meta property="og:description" content="Python and Flask backends with machine learning. Projects, skills and contact details.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="topbar" aria-label="Primary">
+    <a href="#work">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#contact">Contact</a>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="Switch colour theme">Theme</button>
+  </nav>
+
+  <header class="hero">
+    <h1>Boddu Aarathi</h1>
+    <p class="tagline">I build Python backends that turn audio and text into decisions.</p>
+    <p class="hero-meta">Computer Science undergraduate at RGUKT Srikakulam with a focus on backend development and machine learning. I work with Flask, REST APIs and real-time data, and I like taking a project from raw signal to something a person can actually use.</p>
+    <div class="wave-wrap">
+      <canvas id="wave" aria-hidden="true"></canvas>
+      <p class="wave-note">Drawn live in your browser. Move your cursor across it. Audio signals like this are what my scream-detection project analyses.</p>
+    </div>
+  </header>
+
+  <section id="work">
+    <div class="sec">
+      <h2>Selected work</h2>
+      <div>
+        <article class="feature">
+          <h3>Healthcare Platform</h3>
+          <p class="badge">Prototype built for a recruitment assignment</p>
+          <p>An AI-native platform for patient access and hospital operations. A patient describes a concern in a chat, and the assistant points them to the right doctor at the right hospital and books the visit. Around that sits a set of role-based dashboards, so each kind of user sees only what they need.</p>
+          <p>This is a working demo, not a production system. I built it to show how I structure a product with several user roles, data separation between hospitals, and an AI layer on top.</p>
+          <p><a class="btn" href="https://healthcare-platform-blush.vercel.app" target="_blank" rel="noopener noreferrer">Open the live demo</a></p>
+
+          <p class="roles-title">Jump straight into a role</p>
+          <ul class="roles">
+            <li><a href="https://healthcare-platform-blush.vercel.app/app.html#chat" target="_blank" rel="noopener noreferrer">Patient AI chat</a><span>Describe a concern and get matched to a doctor and hospital, then book.</span></li>
+            <li><a href="https://healthcare-platform-blush.vercel.app/app.html#patient" target="_blank" rel="noopener noreferrer">Patient dashboard</a><span>Upcoming appointments, questionnaires and profile.</span></li>
+            <li><a href="https://healthcare-platform-blush.vercel.app/app.html#doctor" target="_blank" rel="noopener noreferrer">Doctor dashboard</a><span>Today's schedule, calendar, availability, blocked time and pre-visit responses.</span></li>
+            <li><a href="https://healthcare-platform-blush.vercel.app/app.html#hospital" target="_blank" rel="noopener noreferrer">Hospital admin</a><span>A hospital-scoped view with a switcher. Data is isolated per hospital.</span></li>
+            <li><a href="https://healthcare-platform-blush.vercel.app/app.html#platform" target="_blank" rel="noopener noreferrer">Platform admin</a><span>Applications, AI activity, integrations, workflows, analytics, evaluation, health and audit.</span></li>
+            <li><a href="https://healthcare-platform-blush.vercel.app/app.html" target="_blank" rel="noopener noreferrer">Unified hub</a><span>All five views in one page with tabs. Best for a quick walkthrough.</span></li>
+          </ul>
+        </article>
+
+        <h3 class="h-sub">Machine learning projects</h3>
+        <div class="projects">
+
+          <article class="project">
+            <div>
+              <h3>Ecommerce Product Recommendation</h3>
+              <p class="when">December 2024</p>
+              <p class="stack">Python, Flask, Scikit-learn</p>
+            </div>
+            <ul>
+              <li>Designed a recommendation engine that suggests products from user preferences.</li>
+              <li>Implemented both content-based and rating-based recommendation logic.</li>
+              <li>Built the Flask interface where users interact with the engine and see recommendations.</li>
+              <li>Optimised the pipeline for efficient data processing.</li>
+              <li><a class="link" href="https://your-ecommerce-deployment.com" target="_blank" rel="noopener noreferrer">View live demo →</a></li>
+            </ul>
+          </article>
+
+          <article class="project">
+            <div>
+              <h3>Human Scream Detection and Alert System</h3>
+              <p class="when">February 2025</p>
+              <p class="stack">Python, Flask, Librosa, Twilio API</p>
+            </div>
+            <ul>
+              <li>Built a backend that takes audio input and detects emergency scream patterns with machine learning.</li>
+              <li>Made a Flask web interface that records and processes audio in real time.</li>
+              <li>Connected the Twilio API so registered contacts automatically receive an alert with the GPS location.</li>
+              <li>Wrote the audio feature extraction and processing pipeline.</li>
+              <li><a class="link" href="https://your-scream-detection-deployment.com" target="_blank" rel="noopener noreferrer">View live demo →</a></li>
+            </ul>
+          </article>
+
+          <article class="project">
+            <div>
+              <h3>Speech-to-Text Web Application</h3>
+              <p class="when">2025</p>
+              <p class="stack">Python, Speech Recognition API, Flask</p>
+            </div>
+            <ul>
+              <li>Developed a backend application that converts speech into text.</li>
+              <li>Supports multiple audio formats, including WAV and MP3.</li>
+              <li>Built the audio processing pipeline and the API integration for transcription.</li>
+              <li><a class="link" href="https://your-speech-to-text-deployment.com" target="_blank" rel="noopener noreferrer">View live demo →</a></li>
+            </ul>
+          </article>
+
+          <article class="project">
+            <div>
+              <h3>Automatic Text Summarization Tool</h3>
+              <p class="when">2025</p>
+              <p class="stack">Python, NLP, NLTK</p>
+            </div>
+            <ul>
+              <li>Built a tool that produces concise summaries of long documents.</li>
+              <li>Implemented preprocessing: tokenisation, stop-word removal and stemming.</li>
+              <li>Wrote the backend logic for extractive summarisation.</li>
+              <li><a class="link" href="https://your-text-summarization-deployment.com" target="_blank" rel="noopener noreferrer">View live demo →</a></li>
+            </ul>
+          </article>
+
+          <article class="project">
+            <div>
+              <h3>Weather App</h3>
+              <p class="when">2025</p>
+              <p class="stack">Python, Flask, REST API</p>
+            </div>
+            <ul>
+              <li>Built a Flask backend that fetches live weather data from a public API.</li>
+              <li>Designed a clean interface for searching cities and viewing current conditions.</li>
+              <li>Handled API errors and rate limiting gracefully.</li>
+              <li><a class="link" href="https://your-weather-app-deployment.com" target="_blank" rel="noopener noreferrer">View live demo →</a></li>
+            </ul>
+          </article>
+
+          <article class="project">
+            <div>
+              <h3>Neural Style Transfer</h3>
+              <p class="when">2025</p>
+              <p class="stack">Python, TensorFlow, OpenCV</p>
+            </div>
+            <ul>
+              <li>Implemented a neural style transfer model that applies an artistic style to a content image.</li>
+              <li>Used a pre-trained VGG network for feature extraction.</li>
+              <li>Built a Flask interface where users upload an image and receive a stylised output.</li>
+              <li><a class="link" href="https://your-neural-style-deployment.com" target="_blank" rel="noopener noreferrer">View live demo →</a></li>
+            </ul>
+          </article>
+
+          <article class="project">
+            <div>
+              <h3>Attention Tracker</h3>
+              <p class="when">2025</p>
+              <p class="stack">Python, OpenCV, Deep Learning</p>
+            </div>
+            <ul>
+              <li>Built a real-time attention tracking system using facial landmarks and eye gaze estimation.</li>
+              <li>Detects whether a user is focused, distracted or away from the screen.</li>
+              <li>Logs attention metrics over time for analysis.</li>
+              <li><a class="link" href="https://your-attention-tracker-deployment.com" target="_blank" rel="noopener noreferrer">View live demo →</a></li>
+            </ul>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="sec">
+      <h2>Skills</h2>
+      <div class="skills">
+        <div>
+          <h3>Languages</h3>
+          <ul><li>Python</li><li>C</li><li>JavaScript</li><li>HTML</li><li>CSS</li></ul>
+        </div>
+        <div>
+          <h3>Backend and data</h3>
+          <ul><li>Flask</li><li>REST APIs</li><li>MySQL</li><li>Git and GitHub</li></ul>
+        </div>
+        <div>
+          <h3>AI and ML</h3>
+          <ul><li>Machine learning</li><li>Deep learning</li><li>NLP</li><li>OpenCV</li><li>Librosa</li><li>NumPy and Pandas</li><li>Scikit-learn</li><li>TensorFlow</li></ul>
+        </div>
+        <div>
+          <h3>Tools and core CS</h3>
+          <ul><li>Jupyter Lab</li><li>VS Code</li><li>OOP</li><li>DBMS</li><li>Data structures</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="sec">
+      <h2>Experience and achievements</h2>
+      <ul class="rows">
+        <li><div><strong>Machine Learning Intern</strong><span class="sub">Corizo</span></div><div class="right">2024</div></li>
+        <li><div><strong>AI Intern</strong><span class="sub">Codetech IT Solutions</span></div><div class="right"></div></li>
+        <li><div><strong>Smart India Hackathon</strong><span class="sub">Selected team member for the internal round</span></div><div class="right"></div></li>
+        <li><div><strong>University Project Expo</strong><span class="sub">Participant</span></div><div class="right"></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="sec">
+      <h2>Education</h2>
+      <ul class="rows">
+        <li><div><strong>B.Tech in Computer Science and Engineering</strong><span class="sub">Rajiv Gandhi University of Knowledge Technologies, Srikakulam</span></div><div class="right">2023 to present<br>CGPA 8.7</div></li>
+        <li><div><strong>Pre-University Course</strong><span class="sub">Rajiv Gandhi University of Knowledge Technologies, Srikakulam</span></div><div class="right">2021 to 2023<br>CGPA 9.38</div></li>
+        <li><div><strong>SSC (Class 10)</strong><span class="sub">Z.P High School, Boddapadu</span></div><div class="right">2020 to 2021<br>99.00%</div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="certifications">
+    <div class="sec">
+      <h2>Certifications</h2>
+      <ul class="certs">
+        <li>
+          Python for Data Science
+          <span class="sub">NPTEL, top 2%, 2025</span>
+          <a class="link" href="/home/rgukt/Desktop/aarathi-portfolio/assets/certificates/python for data science_nptel.jpeg" target="_blank" rel="noopener noreferrer">View certificate →</a>
+        </li>
+        <li>
+          Introduction to Generative AI
+          <span class="sub">Coursera, 2025</span>
+          <a class="link" href="/home/rgukt/Desktop/aarathi-portfolio/assets/certificates/responsible_ai.pdf" target="_blank" rel="noopener noreferrer">View certificate →</a>
+        </li>
+        <li>
+          Internship in Machine Learning
+          <span class="sub">Corizo, 2024</span>
+          <a class="link" href="/home/rgukt/Desktop/aarathi-portfolio/assets/certificates/corizo.jpeg" target="_blank" rel="noopener noreferrer">View certificate →</a>
+        </li>
+        <li>
+          Internship in Artificial Intelligence
+          <span class="sub">Codetech IT Solutions</span>
+          <a class="link" href="/home/rgukt/Desktop/aarathi-portfolio/assets/certificates/codetech_ai.jpeg" target="_blank" rel="noopener noreferrer">View certificate →</a>
+        </li>
+        <li>
+          Data Science using Python
+          <span class="sub">Brainovision</span>
+          <a class="link" href="/home/rgukt/Desktop/aarathi-portfolio/assets/certificates/brainovision_datascience.jpeg" target="_blank" rel="noopener noreferrer">View certificate →</a>
+        </li>
+        <li>
+          Delving into Large Language Models
+          <span class="sub">Appleton Innovation</span>
+          <a class="link" href="/home/rgukt/Desktop/aarathi-portfolio/assets/certificates/llm_workshop.jpeg" target="_blank" rel="noopener noreferrer">View certificate →</a>
+        </li>
+        <li>
+          Artificial Intelligence: Search Methods for Problem Solving
+          <span class="sub">NPTEL</span>
+          <a class="link" href="/home/rgukt/Desktop/aarathi-portfolio/assets/certificates/nptel_ai.jpeg" target="_blank" rel="noopener noreferrer">View certificate →</a>
+        </li>
+        <li>
+          Cloud Computing
+          <span class="sub">NPTEL</span>
+          <a class="link" href="/home/rgukt/Desktop/aarathi-portfolio/assets/certificates/cloud_computing.jpeg" target="_blank" rel="noopener noreferrer">View certificate →</a>
+        </li>
+        <li>
+          AI Tools Workshop
+          <span class="sub">Be10x</span>
+          <a class="link" href="/home/rgukt/Desktop/aarathi-portfolio/assets/certificates/ai_tools.jpeg" target="_blank" rel="noopener noreferrer">View certificate →</a>
+        </li>
+        <li>
+          Quantum Fundamentals
+          <span class="sub">Amaravathi Quantum Valley, Qubitech and WISER</span>
+          <a class="link" href="/home/rgukt/Desktop/aarathi-portfolio/assets/certificates/quantum.jpeg" target="_blank" rel="noopener noreferrer">View certificate →</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="sec">
+      <h2>Contact</h2>
+      <div>
+        <p class="contact-line">Hiring for a backend or ML role? <a href="mailto:aarathiboddu6@gmail.com">Email me</a>.</p>
+        <div class="contact-list">
+          <p>aarathiboddu6@gmail.com</p>
+          <p><a href="tel:+918333066253">+91 83330 66253</a></p>
+          <p>Palasa, Srikakulam, Andhra Pradesh, India</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2026 Boddu Aarathi</footer>
+</div>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
