@@ -110,6 +110,12 @@ section { border-top: 1px solid var(--rule); padding: clamp(2.5rem, 6vw, 4rem) 0
 .roles span { color: var(--muted); font-size: 0.97rem; }
 .roles-title { margin: 1.75rem 0 0; font-weight: 600; }
 @media (max-width: 640px) { .roles li { grid-template-columns: 1fr; gap: 0.15rem; } }
+.feature .repo-link {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule);
+  font-weight: 600;
+}
 
 /* other projects */
 .projects { margin-top: 1rem; }
@@ -120,15 +126,53 @@ section { border-top: 1px solid var(--rule); padding: clamp(2.5rem, 6vw, 4rem) 0
 .project .stack { color: var(--muted); font-size: 0.95rem; margin: 0.75rem 0 0; }
 .project ul { margin: 0; padding-left: 1.15rem; }
 .project li { margin-bottom: 0.4rem; }
-.project .link { display: inline-block; margin-top: 0.25rem; font-weight: 600; }
+.project .link-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  padding-left: 0;
+  list-style: none;
+}
+.project .link-row .link {
+  display: inline-block;
+  font-weight: 600;
+}
 @media (max-width: 760px) { .project { grid-template-columns: 1fr; gap: 0.9rem; } }
+@media (max-width: 480px) {
+  .project .link-row { flex-direction: column; gap: 0.35rem; }
+}
 .h-sub { font-family: var(--display); font-weight: 650; font-size: 1.15rem; margin: 2.75rem 0 0; }
 
 /* skills */
-.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 2rem 1.75rem; }
-.skills h3 { font-family: var(--display); font-size: 1.05rem; font-weight: 650; margin: 0 0 0.6rem; }
-.skills ul { list-style: none; margin: 0; padding: 0; color: var(--muted); }
-.skills li { padding: 0.15rem 0; }
+.skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem 1.75rem;
+  width: 100%;
+}
+.skill-group h3 {
+  font-family: var(--display);
+  font-size: 1.05rem;
+  font-weight: 650;
+  margin: 0 0 0.6rem;
+  color: var(--ink);
+}
+.skill-group ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: var(--muted);
+}
+.skill-group li {
+  padding: 0.15rem 0;
+}
+@media (max-width: 760px) {
+  .skills { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .skills { grid-template-columns: 1fr; }
+}
 
 /* rows (experience, education) */
 .rows { list-style: none; margin: 0; padding: 0; }
@@ -136,6 +180,12 @@ section { border-top: 1px solid var(--rule); padding: clamp(2.5rem, 6vw, 4rem) 0
 .rows > li:last-child { border-bottom: 1px solid var(--rule); }
 .rows strong { font-weight: 600; }
 .rows .sub { color: var(--muted); font-size: 0.97rem; display: block; }
+.rows .sub + .sub {
+  margin-top: 0.25rem;
+  font-size: 0.92rem;
+  font-style: italic;
+  line-height: 1.4;
+}
 .rows .right { color: var(--muted); text-align: right; font-size: 0.97rem; }
 @media (max-width: 560px) { .rows > li { grid-template-columns: 1fr; gap: 0.1rem; } .rows .right { text-align: left; } }
 

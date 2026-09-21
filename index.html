@@ -30,7 +30,7 @@
   <header class="hero">
     <h1>Boddu Aarathi</h1>
     <p class="tagline">I build Python backends that turn audio and text into decisions.</p>
-    <p class="hero-meta">Computer Science undergraduate at RGUKT Srikakulam with a focus on backend development and machine learning. I work with Flask, REST APIs and real-time data, and I like taking a project from raw signal to something a person can actually use.</p>
+    <p class="hero-meta">Computer Science undergraduate at RGUKT Srikakulam with a focus on backend development,Artificial Intelligence and machine learning. I work with Flask, REST APIs and real-time data, and I like taking a project from raw data to something a person can actually use.</p>
     <div class="wave-wrap">
       <canvas id="wave" aria-hidden="true"></canvas>
       <p class="wave-note">Drawn live in your browser. Move your cursor across it. Audio signals like this are what my scream-detection project analyses.</p>
@@ -41,11 +41,20 @@
     <div class="sec">
       <h2>Selected work</h2>
       <div>
+
+        <!-- ═══════════════ FEATURED: HEALTHCARE PLATFORM ═══════════════ -->
         <article class="feature">
           <h3>Healthcare Platform</h3>
           <p class="badge">Prototype built for a recruitment assignment</p>
-          <p>An AI-native platform for patient access and hospital operations. A patient describes a concern in a chat, and the assistant points them to the right doctor at the right hospital and books the visit. Around that sits a set of role-based dashboards, so each kind of user sees only what they need.</p>
-          <p>This is a working demo, not a production system. I built it to show how I structure a product with several user roles, data separation between hospitals, and an AI layer on top.</p>
+
+          <p><strong>The problem:</strong> Patients struggle to navigate hospital departments and booking systems. They don't know which specialty handles shoulder pain, which doctor has availability this week, or whether an external hospital system has actually confirmed their appointment.</p>
+
+          <p><strong>What I built:</strong> An AI-native, multi-tenant healthcare access platform where patients describe their concern in natural language, and an AI assistant handles discovery, availability checks, and booking end-to-end. Hospitals configure their services, doctors, and calendars through role-based dashboards.</p>
+
+          <p><strong>How it works:</strong> A patient types "I need to see a doctor for my shoulder pain this week." The AI detects intent, infers the specialty (Orthopedics), discovers matching doctors across hospitals, checks real calendar availability, presents options, and books the chosen slot. Every appointment is created through a controlled capability, verified against a Mock EHR system, and only confirmed once external state is synchronized. Failed or ambiguous EHR responses create reconciliation records instead of false confirmations.</p>
+
+          <p><strong>Engineering highlights:</strong> Multi-tenant isolation at every layer, concurrency-safe booking with pessimistic locks, idempotency keys to prevent duplicates, external verification before confirmation, and a full audit trail with correlation IDs threaded through the entire flow.</p>
+
           <p><a class="btn" href="https://healthcare-platform-blush.vercel.app" target="_blank" rel="noopener noreferrer">Open the live demo</a></p>
 
           <p class="roles-title">Jump straight into a role</p>
@@ -57,108 +66,137 @@
             <li><a href="https://healthcare-platform-blush.vercel.app/app.html#platform" target="_blank" rel="noopener noreferrer">Platform admin</a><span>Applications, AI activity, integrations, workflows, analytics, evaluation, health and audit.</span></li>
             <li><a href="https://healthcare-platform-blush.vercel.app/app.html" target="_blank" rel="noopener noreferrer">Unified hub</a><span>All five views in one page with tabs. Best for a quick walkthrough.</span></li>
           </ul>
+          <p class="repo-link">
+            <a href="https://github.com/aarathi2006/healthcare_platform" target="_blank" rel="noopener noreferrer">Source code on GitHub →</a>
+          </p>
         </article>
 
         <h3 class="h-sub">Machine learning projects</h3>
         <div class="projects">
 
+          <!-- ═══════════════ 1. ECOMMERCE RECOMMENDATION ═══════════════ -->
           <article class="project">
             <div>
               <h3>Ecommerce Product Recommendation</h3>
               <p class="when">December 2024</p>
-              <p class="stack">Python, Flask, Scikit-learn</p>
+              <p class="stack">Python · Flask · Scikit-learn · Pandas · NumPy</p>
             </div>
             <ul>
-              <li>Designed a recommendation engine that suggests products from user preferences.</li>
-              <li>Implemented both content-based and rating-based recommendation logic.</li>
-              <li>Built the Flask interface where users interact with the engine and see recommendations.</li>
-              <li>Optimised the pipeline for efficient data processing.</li>
-              <li><a class="link" href="https://your-ecommerce-deployment.com" target="_blank" rel="noopener noreferrer">View live demo →</a></li>
+              <li><strong>Problem:</strong> Ecommerce users get overwhelmed by huge catalogs and generic "top sellers" lists, leading to low engagement and lost sales.</li>
+              <li><strong>Solution:</strong> A recommendation engine that suggests products based on <em>content similarity</em> and <em>rating behaviour</em>, delivered through a Flask web interface.</li>
+              <li><strong>Approach:</strong> Cleaned a 5,000-row Walmart review sample, built TF-IDF vectors over product descriptions, computed cosine similarity for content-based filtering, and item-item Pearson correlation for collaborative filtering. Trending products use a Bayesian average to avoid one-review bias.</li>
+              <li><strong>Highlights:</strong> Model evaluation with Precision@10 and RMSE, graceful cold-start fallback to trending, and a deployable Flask app with Gunicorn on Render.</li>
+              <li class="link-row">
+                <a class="link" href="https://github.com/aarathi2006/ecommerce-product-recommendation" target="_blank" rel="noopener noreferrer">Source code →</a>
+              </li>
             </ul>
           </article>
 
+          <!-- ═══════════════ 2. SCREAM DETECTION ═══════════════ -->
           <article class="project">
             <div>
-              <h3>Human Scream Detection and Alert System</h3>
+              <h3>Human Scream Detection & Alert System</h3>
               <p class="when">February 2025</p>
-              <p class="stack">Python, Flask, Librosa, Twilio API</p>
+              <p class="stack">Python · Flask · Librosa · Twilio API · Scikit-learn</p>
             </div>
             <ul>
-              <li>Built a backend that takes audio input and detects emergency scream patterns with machine learning.</li>
-              <li>Made a Flask web interface that records and processes audio in real time.</li>
-              <li>Connected the Twilio API so registered contacts automatically receive an alert with the GPS location.</li>
-              <li>Wrote the audio feature extraction and processing pipeline.</li>
-              <li><a class="link" href="https://your-scream-detection-deployment.com" target="_blank" rel="noopener noreferrer">View live demo →</a></li>
+              <li><strong>Problem:</strong> In emergency situations — assault, accidents, medical crises — victims can't always call for help. A system that detects distress automatically can save response time.</li>
+              <li><strong>Solution:</strong> A backend that listens to live audio, classifies it as a human scream vs. ambient noise, and sends an automatic alert with GPS location to pre-registered emergency contacts.</li>
+              <li><strong>Approach:</strong> Extracted MFCC features from raw audio with Librosa, trained a classifier on labelled scream and non-scream samples, and built a Flask interface that records and processes audio in real time. Twilio handles SMS alerts to contacts with the current GPS location attached.</li>
+              <li><strong>Highlights:</strong> End-to-end signal-processing pipeline from raw WAV to actionable alert; API integration with Twilio for real-world messaging.</li>
+              <li class="link-row">
+                <a class="link" href="https://github.com/aarathi2006/Human-Scream-Detection" target="_blank" rel="noopener noreferrer">Source code →</a>
+              </li>
             </ul>
           </article>
 
+          <!-- ═══════════════ 3. SPEECH-TO-TEXT ═══════════════ -->
           <article class="project">
             <div>
               <h3>Speech-to-Text Web Application</h3>
               <p class="when">2025</p>
-              <p class="stack">Python, Speech Recognition API, Flask</p>
+              <p class="stack">Python · Flask · Speech Recognition API</p>
             </div>
             <ul>
-              <li>Developed a backend application that converts speech into text.</li>
-              <li>Supports multiple audio formats, including WAV and MP3.</li>
-              <li>Built the audio processing pipeline and the API integration for transcription.</li>
-              <li><a class="link" href="https://your-speech-to-text-deployment.com" target="_blank" rel="noopener noreferrer">View live demo →</a></li>
+              <li><strong>Problem:</strong> Transcribing voice recordings manually is slow, error-prone, and doesn't scale — especially for content creators, students, and accessibility use cases.</li>
+              <li><strong>Solution:</strong> A web app that accepts uploaded audio files or live microphone input and returns accurate text transcripts in seconds.</li>
+              <li><strong>Approach:</strong> Built a Flask backend that accepts WAV and MP3 uploads, normalises audio (sample rate, mono conversion), and calls the Speech Recognition API for transcription. Engineered the audio pipeline to handle long files without timeout.</li>
+              <li><strong>Highlights:</strong> Multi-format audio support, error handling for corrupt or silent files, and a clean UI that returns results as copyable text.</li>
+              <li class="link-row">
+                <a class="link" href="https://github.com/aarathi2006/speech-to-text-conversion" target="_blank" rel="noopener noreferrer">Source code →</a>
+              </li>
             </ul>
           </article>
 
+          <!-- ═══════════════ 4. TEXT SUMMARIZATION ═══════════════ -->
           <article class="project">
             <div>
               <h3>Automatic Text Summarization Tool</h3>
               <p class="when">2025</p>
-              <p class="stack">Python, NLP, NLTK</p>
+              <p class="stack">Python · NLTK · NLP · Flask</p>
             </div>
             <ul>
-              <li>Built a tool that produces concise summaries of long documents.</li>
-              <li>Implemented preprocessing: tokenisation, stop-word removal and stemming.</li>
-              <li>Wrote the backend logic for extractive summarisation.</li>
-              <li><a class="link" href="https://your-text-summarization-deployment.com" target="_blank" rel="noopener noreferrer">View live demo →</a></li>
+              <li><strong>Problem:</strong> Long documents — research papers, reports, articles — take time to read, and skim-reading misses key points.</li>
+              <li><strong>Solution:</strong> A tool that produces concise extractive summaries of long documents while preserving the most important information.</li>
+              <li><strong>Approach:</strong> Preprocessed input text with NLTK (tokenisation, stop-word removal, stemming), scored sentences by word frequency and position, and selected the top-ranked sentences to form a coherent summary. Built as a Python backend with a simple web front-end.</li>
+              <li><strong>Highlights:</strong> Extractive summarisation preserves factual accuracy, no hallucination risk, and works on any input length.</li>
+              <li class="link-row">
+                <a class="link" href="https://github.com/aarathi2006/Text_Summarization_Tool" target="_blank" rel="noopener noreferrer">Source code →</a>
+              </li>
             </ul>
           </article>
 
+          <!-- ═══════════════ 5. WEATHER APP ═══════════════ -->
           <article class="project">
             <div>
               <h3>Weather App</h3>
               <p class="when">2025</p>
-              <p class="stack">Python, Flask, REST API</p>
+              <p class="stack">Python · Flask · REST API · HTML · CSS</p>
             </div>
             <ul>
-              <li>Built a Flask backend that fetches live weather data from a public API.</li>
-              <li>Designed a clean interface for searching cities and viewing current conditions.</li>
-              <li>Handled API errors and rate limiting gracefully.</li>
-              <li><a class="link" href="https://your-weather-app-deployment.com" target="_blank" rel="noopener noreferrer">View live demo →</a></li>
+              <li><strong>Problem:</strong> Most weather sites are cluttered with ads, irrelevant content, and slow loading. Users just want current conditions for a city, quickly.</li>
+              <li><strong>Solution:</strong> A lightweight Flask app that fetches live weather data from a public API and displays current conditions in a clean, ad-free interface.</li>
+              <li><strong>Approach:</strong> Built a Flask route that accepts a city name, calls the OpenWeather API, parses the JSON response, and renders the result via Jinja2 templates. Handled error cases — invalid city, API rate limit, network failure — with clear user messages.</li>
+              <li><strong>Highlights:</strong> Graceful error handling, server-rendered for fast page loads, and mobile-responsive design.</li>
+              <li class="link-row">
+                <a class="link" href="https://github.com/aarathi2006/weather_app" target="_blank" rel="noopener noreferrer">Source code →</a>
+              </li>
             </ul>
           </article>
 
+          <!-- ═══════════════ 6. NEURAL STYLE TRANSFER ═══════════════ -->
           <article class="project">
             <div>
               <h3>Neural Style Transfer</h3>
               <p class="when">2025</p>
-              <p class="stack">Python, TensorFlow, OpenCV</p>
+              <p class="stack">Python · TensorFlow · OpenCV · Flask</p>
             </div>
             <ul>
-              <li>Implemented a neural style transfer model that applies an artistic style to a content image.</li>
-              <li>Used a pre-trained VGG network for feature extraction.</li>
-              <li>Built a Flask interface where users upload an image and receive a stylised output.</li>
-              <li><a class="link" href="https://your-neural-style-deployment.com" target="_blank" rel="noopener noreferrer">View live demo →</a></li>
+              <li><strong>Problem:</strong> Applying an artistic style to a photo traditionally requires manual editing skills and hours of work in tools like Photoshop.</li>
+              <li><strong>Solution:</strong> A web app that takes a content image and a style reference image and produces a stylised output, using a neural style transfer model.</li>
+              <li><strong>Approach:</strong> Used a pre-trained VGG network to extract content and style features, then optimised a generated image to match the content of one input and the style statistics (Gram matrices) of another. Built a Flask interface for uploading both images and viewing the result.</li>
+              <li><strong>Highlights:</strong> Deep-learning fundamentals applied to a visually demonstrable task; GPU-optional but CPU-compatible.</li>
+              <li class="link-row">
+                <a class="link" href="https://github.com/aarathi2006/Neural_Style_Transfer" target="_blank" rel="noopener noreferrer">Source code →</a>
+              </li>
             </ul>
           </article>
 
+          <!-- ═══════════════ 7. ATTENTION TRACKER ═══════════════ -->
           <article class="project">
             <div>
               <h3>Attention Tracker</h3>
               <p class="when">2025</p>
-              <p class="stack">Python, OpenCV, Deep Learning</p>
+              <p class="stack">Python · OpenCV · Deep Learning · MediaPipe</p>
             </div>
             <ul>
-              <li>Built a real-time attention tracking system using facial landmarks and eye gaze estimation.</li>
-              <li>Detects whether a user is focused, distracted or away from the screen.</li>
-              <li>Logs attention metrics over time for analysis.</li>
-              <li><a class="link" href="https://your-attention-tracker-deployment.com" target="_blank" rel="noopener noreferrer">View live demo →</a></li>
+              <li><strong>Problem:</strong> In online learning and remote work, it's hard to tell if someone is genuinely focused or just logged in. Simple presence detection isn't enough.</li>
+              <li><strong>Solution:</strong> A real-time attention tracker that uses facial landmarks and eye gaze estimation to determine whether a user is focused, distracted, or away from the screen.</li>
+              <li><strong>Approach:</strong> Detected facial landmarks with MediaPipe, computed head pose and eye gaze vectors, and classified attention state over sliding time windows. Logged attention metrics for review and analysis.</li>
+              <li><strong>Highlights:</strong> Real-time processing from a webcam feed; works without specialised hardware; useful for e-learning engagement analytics.</li>
+              <li class="link-row">
+                <a class="link" href="https://github.com/aarathi2006/Real_Time_Violence_Detection" target="_blank" rel="noopener noreferrer">Source code →</a>
+              </li>
             </ul>
           </article>
 
@@ -171,21 +209,47 @@
     <div class="sec">
       <h2>Skills</h2>
       <div class="skills">
-        <div>
+        <div class="skill-group">
           <h3>Languages</h3>
-          <ul><li>Python</li><li>C</li><li>JavaScript</li><li>HTML</li><li>CSS</li></ul>
+          <ul>
+            <li>Python</li>
+            <li>C</li>
+            <li>JavaScript</li>
+            <li>HTML</li>
+            <li>CSS</li>
+          </ul>
         </div>
-        <div>
+        <div class="skill-group">
           <h3>Backend and data</h3>
-          <ul><li>Flask</li><li>REST APIs</li><li>MySQL</li><li>Git and GitHub</li></ul>
+          <ul>
+            <li>Flask</li>
+            <li>REST APIs</li>
+            <li>MySQL</li>
+            <li>Git and GitHub</li>
+          </ul>
         </div>
-        <div>
+        <div class="skill-group">
           <h3>AI and ML</h3>
-          <ul><li>Machine learning</li><li>Deep learning</li><li>NLP</li><li>OpenCV</li><li>Librosa</li><li>NumPy and Pandas</li><li>Scikit-learn</li><li>TensorFlow</li></ul>
+          <ul>
+            <li>Machine learning</li>
+            <li>Deep learning</li>
+            <li>NLP</li>
+            <li>OpenCV</li>
+            <li>Librosa</li>
+            <li>NumPy and Pandas</li>
+            <li>Scikit-learn</li>
+            <li>TensorFlow</li>
+          </ul>
         </div>
-        <div>
+        <div class="skill-group">
           <h3>Tools and core CS</h3>
-          <ul><li>Jupyter Lab</li><li>VS Code</li><li>OOP</li><li>DBMS</li><li>Data structures</li></ul>
+          <ul>
+            <li>Jupyter Lab</li>
+            <li>VS Code</li>
+            <li>OOP</li>
+            <li>DBMS</li>
+            <li>Data structures</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -195,10 +259,61 @@
     <div class="sec">
       <h2>Experience and achievements</h2>
       <ul class="rows">
-        <li><div><strong>Machine Learning Intern</strong><span class="sub">Corizo</span></div><div class="right">2024</div></li>
-        <li><div><strong>AI Intern</strong><span class="sub">Codetech IT Solutions</span></div><div class="right"></div></li>
-        <li><div><strong>Smart India Hackathon</strong><span class="sub">Selected team member for the internal round</span></div><div class="right"></div></li>
-        <li><div><strong>University Project Expo</strong><span class="sub">Participant</span></div><div class="right"></div></li>
+        <li>
+          <div>
+            <strong>Full Stack Developer Intern</strong>
+            <span class="sub">Codetech IT Solutions · 2024</span>
+            <span class="sub">
+              Built backend services with Flask, REST APIs, MySQL and Jinja2.
+              Completed the company's Machine Learning training program covering
+              supervised learning, model evaluation and deploying ML models via Flask APIs.
+            </span>
+          </div>
+          <div class="right">2024</div>
+        </li>
+        <li>
+          <div>
+            <strong>Machine Learning Intern</strong>
+            <span class="sub">Corizo · 2024</span>
+            <span class="sub">
+              Worked on ML model development — data cleaning, feature engineering,
+              model training and evaluation using Python, Scikit-learn and Pandas.
+            </span>
+          </div>
+          <div class="right">2024</div>
+        </li>
+        <li>
+          <div>
+            <strong>Internship at WeMade Logix</strong>
+            <span class="sub">Machine Learning Internship program</span>
+            <span class="sub">
+              Worked on different ML agorithms and full-stack web application tasks
+              as part of the WeMade Logix internship program.
+            </span>
+          </div>
+          <div class="right"></div>
+        </li>
+        <li>
+          <div>
+            <strong>GATE DA 2025</strong>
+            <span class="sub">Scored 329 · All India Rank 11,693 · Data Science &amp; Artificial Intelligence</span>
+          </div>
+          <div class="right"></div>
+        </li>
+        <li>
+          <div>
+            <strong>Smart India Hackathon</strong>
+            <span class="sub">Selected team member for the internal round</span>
+          </div>
+          <div class="right"></div>
+        </li>
+        <li>
+          <div>
+            <strong>University Project Expo</strong>
+            <span class="sub">Participant</span>
+          </div>
+          <div class="right"></div>
+        </li>
       </ul>
     </div>
   </section>
@@ -218,56 +333,17 @@
     <div class="sec">
       <h2>Certifications</h2>
       <ul class="certs">
-        <li>
-          Python for Data Science
-          <span class="sub">NPTEL, top 2%, 2025</span>
-          <a class="link" href="/home/rgukt/Desktop/aarathi-portfolio/assets/certificates/python for data science_nptel.jpeg" target="_blank" rel="noopener noreferrer">View certificate →</a>
-        </li>
-        <li>
-          Introduction to Generative AI
-          <span class="sub">Coursera, 2025</span>
-          <a class="link" href="/home/rgukt/Desktop/aarathi-portfolio/assets/certificates/responsible_ai.pdf" target="_blank" rel="noopener noreferrer">View certificate →</a>
-        </li>
-        <li>
-          Internship in Machine Learning
-          <span class="sub">Corizo, 2024</span>
-          <a class="link" href="/home/rgukt/Desktop/aarathi-portfolio/assets/certificates/corizo.jpeg" target="_blank" rel="noopener noreferrer">View certificate →</a>
-        </li>
-        <li>
-          Internship in Artificial Intelligence
-          <span class="sub">Codetech IT Solutions</span>
-          <a class="link" href="/home/rgukt/Desktop/aarathi-portfolio/assets/certificates/codetech_ai.jpeg" target="_blank" rel="noopener noreferrer">View certificate →</a>
-        </li>
-        <li>
-          Data Science using Python
-          <span class="sub">Brainovision</span>
-          <a class="link" href="/home/rgukt/Desktop/aarathi-portfolio/assets/certificates/brainovision_datascience.jpeg" target="_blank" rel="noopener noreferrer">View certificate →</a>
-        </li>
-        <li>
-          Delving into Large Language Models
-          <span class="sub">Appleton Innovation</span>
-          <a class="link" href="/home/rgukt/Desktop/aarathi-portfolio/assets/certificates/llm_workshop.jpeg" target="_blank" rel="noopener noreferrer">View certificate →</a>
-        </li>
-        <li>
-          Artificial Intelligence: Search Methods for Problem Solving
-          <span class="sub">NPTEL</span>
-          <a class="link" href="/home/rgukt/Desktop/aarathi-portfolio/assets/certificates/nptel_ai.jpeg" target="_blank" rel="noopener noreferrer">View certificate →</a>
-        </li>
-        <li>
-          Cloud Computing
-          <span class="sub">NPTEL</span>
-          <a class="link" href="/home/rgukt/Desktop/aarathi-portfolio/assets/certificates/cloud_computing.jpeg" target="_blank" rel="noopener noreferrer">View certificate →</a>
-        </li>
-        <li>
-          AI Tools Workshop
-          <span class="sub">Be10x</span>
-          <a class="link" href="/home/rgukt/Desktop/aarathi-portfolio/assets/certificates/ai_tools.jpeg" target="_blank" rel="noopener noreferrer">View certificate →</a>
-        </li>
-        <li>
-          Quantum Fundamentals
-          <span class="sub">Amaravathi Quantum Valley, Qubitech and WISER</span>
-          <a class="link" href="/home/rgukt/Desktop/aarathi-portfolio/assets/certificates/quantum.jpeg" target="_blank" rel="noopener noreferrer">View certificate →</a>
-        </li>
+        <li>Python for Data Science<span class="sub">NPTEL, top 2%, 2025</span><a class="link" href="/home/rgukt/Desktop/aarathi-portfolio/assets/certificates/python for data science_nptel.jpeg" target="_blank" rel="noopener noreferrer">View certificate →</a></li>
+        <li>Introduction to Generative AI<span class="sub">Coursera, 2025</span><a class="link" href="/home/rgukt/Desktop/aarathi-portfolio/assets/certificates/responsible_ai.pdf" target="_blank" rel="noopener noreferrer">View certificate →</a></li>
+        <li>Internship at WeMade Logix<span class="sub">Machine Learning Training</span><a class="link" href="/home/rgukt/Desktop/aarathi-portfolio/assets/certificates/ml_wemade_logix.jpeg" target="_blank" rel="noopener noreferrer">View certificate →</a></li>
+        <li>Internship in Machine Learning<span class="sub">Corizo, 2024</span><a class="link" href="/home/rgukt/Desktop/aarathi-portfolio/assets/certificates/corizo.jpeg" target="_blank" rel="noopener noreferrer">View certificate →</a></li>
+        <li>Internship in Artificial Intelligence<span class="sub">Codetech IT Solutions</span><a class="link" href="/home/rgukt/Desktop/aarathi-portfolio/assets/certificates/codetech_ai.jpeg" target="_blank" rel="noopener noreferrer">View certificate →</a></li>
+        <li>Data Science using Python<span class="sub">Brainovision</span><a class="link" href="/home/rgukt/Desktop/aarathi-portfolio/assets/certificates/brainovision_datascience.jpeg" target="_blank" rel="noopener noreferrer">View certificate →</a></li>
+        <li>Delving into Large Language Models<span class="sub">Appleton Innovation</span><a class="link" href="/home/rgukt/Desktop/aarathi-portfolio/assets/certificates/llm_workshop.jpeg" target="_blank" rel="noopener noreferrer">View certificate →</a></li>
+        <li>Artificial Intelligence: Search Methods for Problem Solving<span class="sub">NPTEL</span><a class="link" href="/home/rgukt/Desktop/aarathi-portfolio/assets/certificates/nptel_ai.jpeg" target="_blank" rel="noopener noreferrer">View certificate →</a></li>
+        <li>Cloud Computing<span class="sub">NPTEL</span><a class="link" href="/home/rgukt/Desktop/aarathi-portfolio/assets/certificates/cloud_computing.jpeg" target="_blank" rel="noopener noreferrer">View certificate →</a></li>
+        <li>AI Tools Workshop<span class="sub">Be10x</span><a class="link" href="/home/rgukt/Desktop/aarathi-portfolio/assets/certificates/ai_tools.jpeg" target="_blank" rel="noopener noreferrer">View certificate →</a></li>
+        <li>Quantum Fundamentals<span class="sub">Amaravathi Quantum Valley, Qubitech and WISER</span><a class="link" href="/home/rgukt/Desktop/aarathi-portfolio/assets/certificates/quantum.jpeg" target="_blank" rel="noopener noreferrer">View certificate →</a></li>
       </ul>
     </div>
   </section>
@@ -276,7 +352,7 @@
     <div class="sec">
       <h2>Contact</h2>
       <div>
-        <p class="contact-line">Hiring for a backend or ML role? <a href="mailto:aarathiboddu6@gmail.com">Email me</a>.</p>
+        <p class="contact-line">Hiring for a backend or AI/ML role? <a href="mailto:aarathiboddu6@gmail.com">Email me</a>.</p>
         <div class="contact-list">
           <p>aarathiboddu6@gmail.com</p>
           <p><a href="tel:+918333066253">+91 83330 66253</a></p>
@@ -292,19 +368,3 @@
 <script src="js/main.js" defer></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-git remote add origin https://github.com/aarathi2006/aarathi-portfolio.git
